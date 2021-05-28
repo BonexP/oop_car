@@ -14,6 +14,8 @@ public class MForm2 {
     private JButton button2;
     private JLabel pos_used;
     private JLabel pos_left;
+    private JLabel used_count;
+    private JLabel left_count;
 
     public static void main(String[] args) throws IOException {
         new GetSQL();
@@ -23,21 +25,21 @@ public class MForm2 {
         frame.setContentPane(form2.panel);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setSize(640,400);
+        frame.setSize(700,400);
         frame.setTitle("车辆管理系统");
         frame.setVisible(true);
 
 
     }
-
+    int totalPOS=100;
     public MForm2() {
         button1.addMouseListener(new InsertMouseListener());
         showAllButton.addMouseListener(new ShowAllListener());
         button2.addMouseListener(new GetSumListener());
-        int totalPOS=100;
+
         int carSUm=new SQLiteOP().getCarSum();
-        pos_used.setText(pos_used.getText()+":"+carSUm);
-        pos_left.setText(pos_left.getText()+":"+ (totalPOS - carSUm));
+        used_count.setText(String.valueOf(carSUm));
+        left_count.setText(String.valueOf(totalPOS - carSUm));
         //this.setVisible(true);
         //this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
@@ -57,71 +59,175 @@ public class MForm2 {
     }
 
     private void createUIComponents() {
-        
+
     }
+    class InsertMouseListener implements java.awt.event.MouseListener {
+        final InsertRecords iR = new InsertRecords();
+
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            //System.out.println("fucked");
+            //iR.insert();
+            MForm2 form2=MForm2.form23;
+            iR.insert(form2.getData(form2));
+            int carSUm=new SQLiteOP().getCarSum();
+            used_count.setText(String.valueOf(carSUm));
+            left_count.setText(String.valueOf(totalPOS - carSUm));
+
+
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    }
+
+//
+//    class InsertMouseListener implements java.awt.event.MouseListener {
+//        final InsertRecords iR = new InsertRecords();
+//
+//
+//        @Override
+//        public void mouseClicked(MouseEvent e) {
+//            //System.out.println("fucked");
+//            //iR.insert();
+//            MForm2 form2=MForm2.form23;
+//            iR.insert(form2.getData(form2));
+//
+//
+//        }
+//
+//        @Override
+//        public void mousePressed(MouseEvent e) {
+//
+//        }
+//
+//        @Override
+//        public void mouseReleased(MouseEvent e) {
+//
+//        }
+//
+//        @Override
+//        public void mouseEntered(MouseEvent e) {
+//
+//        }
+//
+//        @Override
+//        public void mouseExited(MouseEvent e) {
+//
+//        }
+//    }
+
+    class GetSumListener implements MouseListener{
+        final SQLiteOP op=new SQLiteOP();
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            System.out.println( op.getCarSum());
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    }
+
 }
-
-//import java.awt.event.MouseEvent;
-
- class InsertMouseListener implements java.awt.event.MouseListener {
-    final InsertRecords iR = new InsertRecords();
-
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        //System.out.println("fucked");
-        //iR.insert();
-        MForm2 form2=MForm2.form23;
-        iR.insert(form2.getData(form2));
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
-}
-
-class GetSumListener implements MouseListener{
-    final SQLiteOP op=new SQLiteOP();
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        System.out.println( op.getCarSum());
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
-}
-
+//
+////import java.awt.event.MouseEvent;
+//
+//class InsertMouseListener implements java.awt.event.MouseListener {
+//    final InsertRecords iR = new InsertRecords();
+//
+//
+//    @Override
+//    public void mouseClicked(MouseEvent e) {
+//        //System.out.println("fucked");
+//        //iR.insert();
+//        MForm2 form2=MForm2.form23;
+//        iR.insert(form2.getData(form2));
+//
+//
+//    }
+//
+//    @Override
+//    public void mousePressed(MouseEvent e) {
+//
+//    }
+//
+//    @Override
+//    public void mouseReleased(MouseEvent e) {
+//
+//    }
+//
+//    @Override
+//    public void mouseEntered(MouseEvent e) {
+//
+//    }
+//
+//    @Override
+//    public void mouseExited(MouseEvent e) {
+//
+//    }
+//}
+//
+//// class GetSumListener implements MouseListener{
+//    final SQLiteOP op=new SQLiteOP();
+//    @Override
+//    public void mouseClicked(MouseEvent e) {
+//        System.out.println( op.getCarSum());
+//    }
+//
+//    @Override
+//    public void mousePressed(MouseEvent e) {
+//
+//    }
+//
+//    @Override
+//    public void mouseReleased(MouseEvent e) {
+//
+//    }
+//
+//    @Override
+//    public void mouseEntered(MouseEvent e) {
+//
+//    }
+//
+//    @Override
+//    public void mouseExited(MouseEvent e) {
+//
+//    }
+//}
+//

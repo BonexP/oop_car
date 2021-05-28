@@ -4,7 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.peer.MouseInfoPeer;
 
 
-public class MFrame extends Frame {
+public class MFrame extends JFrame {
 //    Panel p=new Panel();
 //    //p.(new JButton("草我"));
 //    //this.add(new JButton("草我"));
@@ -40,10 +40,13 @@ public class MFrame extends Frame {
 //        this.add(p3,BorderLayout.NORTH);
 
         this.setSize(600,500);
+        //this.add(new MForm2(),BorderLayout.SOUTH);
         //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
     }
+
 
 }
 

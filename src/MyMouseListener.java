@@ -10,6 +10,7 @@ public class MyMouseListener implements java.awt.event.MouseListener {
     public void mouseClicked(MouseEvent e) {
         //System.out.println("fucked");
         iR.insert();
+        //iR.insert(getData(MForm2), MForm2.textArea2.getText(),MForm2.textArea3.getText());
 
     }
 

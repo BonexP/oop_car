@@ -18,9 +18,9 @@ public class InsertRecords {
     }
 
     public void insert() {
-        String chepaiText = frame.chepai.getText();
-        String timeinText=frame.timein.getText();
-        String timeoutText=frame.timeout.getText();
+        String chepaiText = MFrame.chepai.getText();
+        String timeinText=MFrame.timein.getText();
+        String timeoutText=MFrame.timeout.getText();
         String sql = "INSERT INTO user(车牌号, time_in,time_out) VALUES('"+chepaiText+"','"+timeinText+"','"+timeoutText+"')";
 
         try {

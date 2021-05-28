@@ -1,6 +1,10 @@
+import javax.swing.*;
+
 public class Main {
 
     public static void main(String[] args) {
-        frame frame=new frame();
+        //MFrame frame =new MFrame();
+        MForm2 form2=new MForm2();
+
     }
 }

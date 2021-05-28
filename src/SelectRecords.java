@@ -1,4 +1,4 @@
-
+import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,9 +7,9 @@ import java.sql.Statement;
 
 public class SelectRecords {
 
-    private Connection connect() {
+    private Connection connect()  {
         // SQLite connection string
-        String url = "jdbc:sqlite:D:/sqlite/java-sqlite.db";
+        String url = GetSQL.dbUrl;
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -23,7 +23,7 @@ public class SelectRecords {
         String sql = "SELECT * FROM user";
 
         try {
-            Connection conn = this.connect();
+            Connection conn = GetSQL.connection;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
@@ -35,11 +35,6 @@ public class SelectRecords {
             System.out.println(e.getMessage());
         }
     }
-
-    /**
-     * @param args
-     *            the command line arguments
-     */
 
 }//原文出自【易百教程】，商业转载请联系作者获得授权，非商业请保留原文链接：https://www.yiibai.com/sqlite/java-with-sqlite.html
 

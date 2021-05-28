@@ -2,7 +2,7 @@ import java.awt.event.MouseEvent;
 
 public class ShowAllListener implements java.awt.event.MouseListener {
 
-    SelectRecords sr = new SelectRecords();
+    final SelectRecords sr = new SelectRecords();
 
 
     @Override

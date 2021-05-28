@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.peer.MouseInfoPeer;
 
 
 public class MFrame extends JFrame {
@@ -10,9 +8,9 @@ public class MFrame extends JFrame {
 //    //this.add(new JButton("草我"));
 //    JFrame frame = new JFrame();
 //    JPanel jp=new JPanel();
-    static TextField chepai=new TextField(20);
-    static TextField timein=new TextField(20);
-    static TextField timeout=new TextField(20);
+    static final TextField chepai=new TextField(20);
+    static final TextField timein=new TextField(20);
+    static final TextField timeout=new TextField(20);
     MFrame()
     {
         this.setLayout(new GridLayout(4,1));

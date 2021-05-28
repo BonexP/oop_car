@@ -4,8 +4,29 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class CreateTable {
+public class InitDB {
+    public static void connect() {
+        Connection conn = null;
+        try {
+            // db parameters
+            String url = GetSQL.dbUrl;
+            // create a connection to the database
+            conn = DriverManager.getConnection(url);
 
+            System.out.println("Connection to SQLite has been established.");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
 
     public static void createNewTable()  {
         // SQLite connection string
@@ -29,6 +50,7 @@ public class CreateTable {
      *            the command line arguments
      */
     public static void main(String[] args)  {
+        connect();
         createNewTable();
     }
 

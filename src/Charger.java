@@ -1,5 +1,3 @@
-import com.sun.prism.Image;
-
 import javax.swing.*;
 
 public class Charger {

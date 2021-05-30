@@ -1,8 +1,6 @@
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
-import org.omg.CosNaming.IstringHelper;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseEvent;
@@ -46,7 +44,7 @@ public class MForm2 {
 
 
     }
-    int totalPOS = 100;
+    final int totalPOS = 100;
 
     public MForm2() {
         button1.addMouseListener(new InsertMouseListener());
@@ -97,9 +95,7 @@ public class MForm2 {
             return false;
         int Hour=Integer.parseInt(Time.substring(0,2));
         int Minute=Integer.parseInt(Time.substring(2,4));
-        if(Hour>=0&&Hour<=24&&Minute>=0&&Minute<=60)
-            return true;
-        return false;
+        return Hour >= 0 && Hour <= 24 && Minute >= 0 && Minute <= 60;
     }
     public boolean IsCarBrand(String CarBrand){
         String cb;//=CarBrand.substring(CarBrand.length()-6);
@@ -111,13 +107,11 @@ public class MForm2 {
         //    return false;
         //}
         //return true;
-        boolean isCB = cb.matches("[a-zA-Z0-9]{5}");
-        return  isCB;
+        return cb.matches("[a-zA-Z0-9]{5}");
     }
 
     public  void timeCheck(String time){
         if (IsTime(time)) {
-            ;
         }
         else{
             warn("时间错误",JOptionPane.ERROR_MESSAGE);
@@ -215,7 +209,7 @@ public class MForm2 {
         }
     }
 
-    class RefreshMouseListener implements MouseListener {
+    static class RefreshMouseListener implements MouseListener {
         @Override
         public void mouseClicked(MouseEvent e) {
             new SQLiteOP().refresh();
@@ -353,7 +347,7 @@ public class MForm2 {
 //        }
 //    }
 
-    class GetSumListener implements MouseListener {
+    static class GetSumListener implements MouseListener {
         final SQLiteOP op = new SQLiteOP();
 
         @Override

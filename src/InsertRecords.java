@@ -35,9 +35,9 @@ public class InsertRecords {
 //        }
 //    }
 
-    public  void insert(String chepaiText,String timeinText,String  timeoutText)
+    public  void insert(String chepaiText,String timeinText,String  timeoutText,String statusText)
     {
-        String sql = "INSERT INTO user(车牌号, time_in,time_out) VALUES('"+chepaiText+"','"+timeinText+"','"+timeoutText+"')";
+        String sql = "INSERT INTO user(车牌号, time_in,time_out,status) VALUES('"+chepaiText+"','"+timeinText+"','"+timeoutText+"','"+statusText+"')";
         try {
             Connection conn = this.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -52,7 +52,7 @@ public class InsertRecords {
     }
     public  void insert(String data)
     {
-        String sql = "INSERT INTO user(车牌号, time_in,time_out) VALUES("+data+")";
+        String sql = "INSERT INTO user(车牌号, time_in,time_out,status) VALUES("+data+")";
         try {
             //Connection conn = this.connect();
             Connection connection=GetSQL.connection;

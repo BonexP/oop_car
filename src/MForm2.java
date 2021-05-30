@@ -1,3 +1,5 @@
+import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
+
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -16,6 +18,10 @@ public class MForm2 {
     private JLabel pos_left;
     private JLabel used_count;
     private JLabel left_count;
+    private JButton car_in;
+    private JButton car_out;
+    private JButton refresh;
+    private JButton charge;
 
     public static void main(String[] args) throws IOException {
         new GetSQL();
@@ -25,9 +31,14 @@ public class MForm2 {
         frame.setContentPane(form2.panel);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setSize(700,400);
+        //frame.setSize(700,400);
         frame.setTitle("车辆管理系统");
         frame.setVisible(true);
+        try {
+            UIManager.setLookAndFeel(new WindowsLookAndFeel());
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -36,10 +47,13 @@ public class MForm2 {
         button1.addMouseListener(new InsertMouseListener());
         showAllButton.addMouseListener(new ShowAllListener());
         button2.addMouseListener(new GetSumListener());
-
+        car_in.addMouseListener(new CarInMouseListener());
+        car_out.addMouseListener(new CarOutMouseListener());
+        refresh.addMouseListener(new RefreshMouseListener());
         int carSUm=new SQLiteOP().getCarSum();
         used_count.setText(String.valueOf(carSUm));
         left_count.setText(String.valueOf(totalPOS - carSUm));
+
         //this.setVisible(true);
         //this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
@@ -51,7 +65,7 @@ public class MForm2 {
     public String  getData(MForm2 data) {
         //return "\""+'+'\"+'+;
         System.out.println( "'"+data.textArea1.getText()+"','"+data.textArea1.getText()+"','"+data.textArea3.getText()+"'");
-        return "'"+data.textArea1.getText()+"','"+data.textArea2.getText()+"','"+data.textArea3.getText()+"'";
+        return "'"+data.textArea1.getText()+"','"+data.textArea2.getText()+"','"+data.textArea3.getText()+"','";
     }
 
     public boolean isModified(MForm2 data) {
@@ -60,6 +74,94 @@ public class MForm2 {
 
     private void createUIComponents() {
 
+    }
+    class CarInMouseListener implements MouseListener{
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            new SQLiteOP().carIn(textArea1.getText(),textArea2.getText());
+            int carSUm=new SQLiteOP().getCarSum();
+            used_count.setText(String.valueOf(carSUm));
+            left_count.setText(String.valueOf(totalPOS - carSUm));
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    }
+    class CarOutMouseListener implements MouseListener{
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            SQLiteOP sqLiteOP =  new SQLiteOP();
+            sqLiteOP.carOut(textArea1.getText(),textArea3.getText());
+            int carSUm=sqLiteOP.getCarSum();
+            sqLiteOP.refresh();
+            used_count.setText(String.valueOf(carSUm));
+            left_count.setText(String.valueOf(totalPOS - carSUm));
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    }
+    class RefreshMouseListener implements MouseListener{
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            new SQLiteOP().refresh();
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
     }
     class InsertMouseListener implements java.awt.event.MouseListener {
         final InsertRecords iR = new InsertRecords();
@@ -70,7 +172,8 @@ public class MForm2 {
             //System.out.println("fucked");
             //iR.insert();
             MForm2 form2=MForm2.form23;
-            iR.insert(form2.getData(form2));
+            System.out.println(form2.getData(form2)+"1'");
+            iR.insert(form2.getData(form2)+"1'");
             int carSUm=new SQLiteOP().getCarSum();
             used_count.setText(String.valueOf(carSUm));
             left_count.setText(String.valueOf(totalPOS - carSUm));

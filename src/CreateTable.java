@@ -12,7 +12,7 @@ public class CreateTable {
         String url = GetSQL.dbUrl;
 
         // SQL statement for creating a new table
-        String sql = "CREATE TABLE IF NOT EXISTS user (id integer primary key autoincrement,车牌号 varchar unique,time_in varchar,time_out varchar);";
+        String sql = "CREATE TABLE IF NOT EXISTS user (id integer primary key autoincrement,车牌号 varchar unique,time_in varchar,time_out varchar,status varchar);";
 
         try {
             Connection conn = DriverManager.getConnection(url);

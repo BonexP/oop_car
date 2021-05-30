@@ -29,7 +29,7 @@ public class SelectRecords {
 
             // loop through the result set
             while (rs.next()) {
-                System.out.println(rs.getInt("id") + "\t" + rs.getString("车牌号") + "\t" + rs.getDouble("time_in")+"\t"+rs.getDouble("time_out"));
+                System.out.println(rs.getInt("id") + "\t" + rs.getString("车牌号") + "\t" + rs.getDouble("time_in")+"\t"+rs.getDouble("time_out")+"\t"+rs.getString("status"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

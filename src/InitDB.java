@@ -1,4 +1,5 @@
 //import java.io.IOException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -9,7 +10,7 @@ import java.util.Properties;
 
 public class InitDB {
 
-    public static void connect(String  url) {
+    public static void connect(String url) {
         Connection conn = null;
         try {
 //            InputStream in = Main.class.getClassLoader().getResourceAsStream("application.properties");
@@ -38,7 +39,7 @@ public class InitDB {
         }
     }
 
-    public static void createNewTable(String url)  {
+    public static void createNewTable(String url) {
         // SQLite connection string
         //String url = GetSQL.dbUrl;
 
@@ -56,10 +57,9 @@ public class InitDB {
     }
 
     /**
-     * @param args
-     *            the command line arguments
+     * @param args the command line arguments
      */
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         InputStream in = Main.class.getClassLoader().getResourceAsStream("application.properties");
         // 创建并加载配置文件
         Properties pro = new Properties();

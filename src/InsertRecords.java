@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -6,7 +5,7 @@ import java.sql.SQLException;
 
 public class InsertRecords {
 
-    private Connection connect()  {
+    private Connection connect() {
         // SQLite connection string
         String url = GetSQL.dbUrl;
         Connection conn = null;
@@ -35,9 +34,8 @@ public class InsertRecords {
 //        }
 //    }
 
-    public  void insert(String chepaiText,String timeinText,String  timeoutText,String statusText)
-    {
-        String sql = "INSERT INTO user(车牌号, time_in,time_out,status) VALUES('"+chepaiText+"','"+timeinText+"','"+timeoutText+"','"+statusText+"')";
+    public void insert(String chepaiText, String timeinText, String timeoutText, String statusText) {
+        String sql = "INSERT INTO user(车牌号, time_in,time_out,status) VALUES('" + chepaiText + "','" + timeinText + "','" + timeoutText + "','" + statusText + "')";
         try {
             Connection conn = this.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -50,12 +48,12 @@ public class InsertRecords {
 
 
     }
-    public  void insert(String data)
-    {
-        String sql = "INSERT INTO user(车牌号, time_in,time_out,status) VALUES("+data+")";
+
+    public void insert(String data) {
+        String sql = "INSERT INTO user(车牌号, time_in,time_out,status) VALUES(" + data + ")";
         try {
             //Connection conn = this.connect();
-            Connection connection=GetSQL.connection;
+            Connection connection = GetSQL.connection;
             PreparedStatement pstmt = connection.prepareStatement(sql);
             // pstmt.setString(1, name);
             //pstmt.setDouble(2, capacity);

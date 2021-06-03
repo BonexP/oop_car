@@ -12,6 +12,7 @@ public class ShowAllListener implements java.awt.event.MouseListener,Runnable {
     @Override
     public void mouseClicked(MouseEvent e) {
         //System.out.println("fucked");
+
         sr.selectAll();
         //new ShowAll().main(null);
         run();

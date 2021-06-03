@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -37,10 +39,24 @@ public class GetSQL {
         dbUrl = pro.getProperty("DB");
         // SQLite connection string
         String url = dbUrl;
+        File file = new File(url);
+
+        if (!file.exists()) {
+
+            InitDB.main(null);
+
+            System.out.println("文件已创建");
+
+        } else {
+
+            System.out.println("文件已存在");
+
+        }
         try {
             connection = DriverManager.getConnection(url);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+
         }
     }
 

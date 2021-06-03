@@ -64,5 +64,19 @@ public class SQLiteOP {
             System.out.println(e.getMessage());
         }
     }
+    public  boolean carCheck(String carNumber){
+        String sql = "SELECT count(*) FROM user WHERE 车牌号 = '"+carNumber+"';";
+        try {
+            Connection conn = GetSQL.connection;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if (rs.getInt("COUNT(*)")!=0)
+                return true;
+            //return (rs.getInt("COUNT(*)"));
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 }
 

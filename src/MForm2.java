@@ -133,7 +133,7 @@ public class MForm2 {
         if (to1 >= 30)
             f += 1;
 
-        charge = (24 - ti0 + f + to0) * 6 + 10 + (do0 - di0 ) * 6500 + (do1 - di1  ) * 1200;
+        charge = (24 - ti0 + f + to0) * 6 + 10 + (do0 - di0 ) * 6500 + (do1 - di1  ) * 120;
         return charge;
     }
 

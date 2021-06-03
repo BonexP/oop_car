@@ -151,6 +151,7 @@
           <background color="-1381654"/>
           <editable value="true"/>
           <enabled value="true"/>
+          <focusAccelerator value="1"/>
           <font name="Microsoft YaHei UI" size="18"/>
           <text value="请输入车牌号"/>
         </properties>
@@ -257,7 +258,7 @@
           <text value="" noi18n="true"/>
         </properties>
       </component>
-      <component id="f7183" class="javax.swing.JTextArea" binding="TimeINTextArea">
+      <component id="f7183" class="javax.swing.JTextArea" binding="timeINTextArea">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
@@ -265,11 +266,12 @@
         </constraints>
         <properties>
           <background color="-1381654"/>
+          <focusAccelerator value="0"/>
           <font name="Microsoft YaHei UI" size="18"/>
           <text value="" noi18n="true"/>
         </properties>
       </component>
-      <component id="71d4a" class="javax.swing.JTextArea" binding="TimeOUTtextArea">
+      <component id="71d4a" class="javax.swing.JTextArea" binding="timeOUTtextArea">
         <constraints>
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>

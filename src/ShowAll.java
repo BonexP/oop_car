@@ -42,6 +42,9 @@ public class ShowAll extends JDialog {
     public static void main(String[] args) {
         ShowAll dialog = new ShowAll();
         dialog.pack();
+        ImageIcon imageIcon=new ImageIcon("res/img/icon.png");
+        dialog.setIconImage(imageIcon.getImage());
+        dialog.setTitle("车库总览");
         dialog.setVisible(true);
         //System.exit(0);
     }

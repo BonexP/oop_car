@@ -24,18 +24,22 @@ public class MForm2 {
     private JButton car_out;
     private JButton refresh;
     private JButton charge;
+    private JTextArea TimeINTextArea;
+    private JTextArea TimeOUTtextArea;
 
     public static void main(String[] args) throws IOException {
         new GetSQL();
         JFrame frame = new JFrame();
         MForm2 form2 = new MForm2();
         form23 = form2;
+        ImageIcon imageIcon=new ImageIcon("res/img/icon.png");
         frame.setContentPane(form2.panel);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();
         //frame.setSize(700,400);
         frame.setTitle("车辆管理系统");
         frame.setVisible(true);
+        frame.setIconImage(imageIcon.getImage());
         try {
             UIManager.setLookAndFeel(new WindowsLookAndFeel());
         } catch (UnsupportedLookAndFeelException e) {
@@ -117,6 +121,7 @@ public class MForm2 {
             warn("时间错误",JOptionPane.ERROR_MESSAGE);
         }
     }
+
     public void carBrandCheck(String carBrand) {
         if (!IsCarBrand(carBrand)) {
             warn("车牌错误",JOptionPane.ERROR_MESSAGE);
@@ -127,13 +132,13 @@ public class MForm2 {
     }
     public int charge(String timein,String timeout) {
         int ti0 = Integer.parseInt(timein.substring(0,2));
-        int ti1 = Integer.parseInt(timeout.substring(2,4));
-        int to0 = Integer.parseInt(timein.substring(0,2));
+        int ti1 = Integer.parseInt(timein.substring(2,4));
+        int to0 = Integer.parseInt(timeout.substring(0,2));
         int to1 = Integer.parseInt(timeout.substring(2,4));
         int f=0,charge;
         if(to1-ti1>=30)
             f=1;
-        charge=(to0-ti0+f)*5+5;
+        charge=(to0-ti0+f)*6+10;
         return charge;
     }
     class CarInMouseListener implements MouseListener {
@@ -146,6 +151,11 @@ public class MForm2 {
             if (!IsCarBrand(textArea1.getText()))
                 return;
             new SQLiteOP().carIn(textArea1.getText(), textArea2.getText());
+            new SQLiteOP().refresh();
+            if(new SQLiteOP().carCheck(textArea1.getText())){
+                warn("车辆存在",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             int carSUm = new SQLiteOP().getCarSum();
             used_count.setText(String.valueOf(carSUm));
             left_count.setText(String.valueOf(totalPOS - carSUm));

@@ -8,10 +8,13 @@ public class Charger {
     public Charger(){
         JFrame jFrame=new JFrame();
         jFrame.setContentPane(panel1);
+        ImageIcon imageIcon=new ImageIcon("res/img/money.png");
         //jFrame.setSize(500,400);
         jFrame.setVisible(true);
         //photo.add(new JLabel(new ImageIcon("res\\img\\index.png")));
         jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        jFrame.setIconImage(imageIcon.getImage());
+        jFrame.setTitle("缴费面板");
         jFrame.pack();
     }
     public Charger(int number){

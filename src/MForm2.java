@@ -82,7 +82,7 @@ public class MForm2 {
         carBrandCheck(data.textArea1.getText());
         timeCheck(data.textArea2.getText());
         timeCheck(data.textArea3.getText());
-//todo:添加日期检查
+
         datecheck(data.timeINTextArea.getText(), data.timeOUTtextArea.getText());
         return "'" + data.textArea1.getText() + "','" + data.timeINTextArea.getText() + data.textArea2.getText() + "','" + data.timeOUTtextArea.getText() + data.textArea3.getText() + "','";
     }
@@ -268,7 +268,7 @@ public class MForm2 {
                 warn("车辆存在", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            //todo:这里要重写成日期和时间的形式
+
             new SQLiteOP().carIn(textArea1.getText(), timeINTextArea.getText() + textArea2.getText());
             new SQLiteOP().refresh();
 
@@ -311,7 +311,7 @@ public class MForm2 {
             if (!IsCarBrand(textArea1.getText()))
                 return;
             timeCheck(textArea3.getText());
-            //todo:这里也要重写成日期和时间的形式
+
             sqLiteOP.carOut(textArea1.getText(), timeOUTtextArea.getText() + textArea3.getText());
             new Charger(charge(timeINTextArea.getText(),timeOUTtextArea.getText(),textArea2.getText(), textArea3.getText()));
             int carSUm = sqLiteOP.getCarSum();
@@ -348,7 +348,7 @@ public class MForm2 {
         @Override
         public void mouseClicked(MouseEvent e) {
             try {
-                //todo:重写收费函数,优先使用多态
+
                 if (timeINTextArea.getText()==timeOUTtextArea.getText())
                     new Charger(charge(textArea2.getText(), textArea3.getText()));
                 else
